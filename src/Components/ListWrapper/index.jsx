@@ -1,24 +1,7 @@
 import { useState } from "react";
 import UserInput from "../UserInput";
-
-const TaskAdder = ({tasks}) => {
-
-    return <div>
-        {tasks.map((task)=>{
-            return 
-            <div style={{display:'flex'}}><input type="checkbox"/><p>{task.body}</p></div>
-        })}
-    </div>
-  };
- // create toggle func input checked={task.isDone} toggle will change this state
- 
-
 export default function ListWrapper() {
- 
-
   const [tasks, setTasks] = useState([]);
-  
-  
 
   return (
     <main>
@@ -31,3 +14,23 @@ export default function ListWrapper() {
   );
 }
 
+const TaskAdder = (props) => {
+  const toggle = (i) => {
+    const newTasks = props.tasks.map((task) => {
+      const newTask = {
+        ...task,
+        isDone: task.id === i ? !task.id : task.id,
+      };
+      return newTask;
+    });
+    props.setTasks(newTasks);
+  };
+  return (
+    <div onClick={(task) => toggle(task.id)}>
+      <input type="checkbox" checked="{task.isDone}" /> 
+      <p>{}
+        
+      </p>
+    </div>
+  );
+};
