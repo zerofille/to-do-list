@@ -1,10 +1,9 @@
-
-import ListWrapper from './Components/ListWrapper';
-
+import ListWrapper from "./Components/ListWrapper";
+import styles from "./app.module.scss";
 function App() {
   return (
-    <div className="App">
-      <ListWrapper/>
+    <div className={styles.App}>
+      <ListWrapper />
     </div>
   );
 }
