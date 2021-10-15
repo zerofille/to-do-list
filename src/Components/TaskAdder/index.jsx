@@ -1,5 +1,7 @@
 import cx from "classnames";
 import styles from "./taskAdder.module.scss";
+// import picture from '../../../public/trash.png'
+
 export default function TaskAdder(props) {
   const toggle = (i) => {
     const newTasks = props.tasks.map((task) => {
@@ -31,7 +33,7 @@ export default function TaskAdder(props) {
               <p className={classNames}>{task.body}</p>
             </div>
             <button onClick={() => deleteTask(task.id)}>
-              <img src='../../../public/trash.png' />
+              <img src='/trash.png' />
             </button>
           </div>
         );
