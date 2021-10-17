@@ -1,7 +1,24 @@
-.done{
-    color: rgb(160, 101, 101);
+.done {
+  color: rgb(126, 125, 125);
   text-decoration: line-through;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
-.unDone{
-    color: aqua;
+.unDone {
+  color: rgb(225, 219, 223);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.trashIcon {
+  color: rgb(105, 9, 125);
+  height: 50px;
+  margin-left: 13px;
+  margin-top: 6px;
+}
+.checkbox {
+  margin-top: 25px;
+}
+.task {
+  justify-content: left;
+  margin-left: 25%;
 }

@@ -1,6 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { TO_DO_LIST_SCHEME } from "../../Utils/ValidationSchemas";
-import styles from './userInput.module.scss'
+import styles from "./userInput.module.scss";
 export default function UserInput(props) {
   const startingFormState = {
     text: "",
@@ -25,8 +25,13 @@ export default function UserInput(props) {
         onSubmit={submitForm}
       >
         <Form>
-          <Field className={styles.input} name="text" placeholder="write down your task" type="text" />
-          <ErrorMessage  name="text">
+          <Field
+            className={styles.input}
+            name="text"
+            placeholder="write down your task"
+            type="text"
+          />
+          <ErrorMessage name="text">
             {(message) => <div className={styles.error}>{message}</div>}
           </ErrorMessage>
         </Form>

@@ -1,6 +1,7 @@
 import cx from "classnames";
 import styles from "./taskAdder.module.scss";
-// import picture from '../../../public/trash.png'
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function TaskAdder(props) {
   const toggle = (i) => {
@@ -27,14 +28,20 @@ export default function TaskAdder(props) {
           [styles.unDone]: !task.isDone,
         });
         return (
-          <div style={{ display: "flex" }}>
+          <div className={styles.task} style={{ display: "flex" }}>
             <div style={{ display: "flex" }} onClick={() => toggle(task.id)}>
-              <input type="checkbox" checked={task.isDone} />
+              <input
+                className={styles.checkbox}
+                type="checkbox"
+                checked={task.isDone}
+              />
               <p className={classNames}>{task.body}</p>
             </div>
-            <button onClick={() => deleteTask(task.id)}>
-              <img src='/trash.png' />
-            </button>
+            <FontAwesomeIcon
+              className={styles.trashIcon}
+              onClick={() => deleteTask(task.id)}
+              icon={faTrashAlt}
+            />
           </div>
         );
       })}
