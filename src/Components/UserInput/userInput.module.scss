@@ -1,10 +1,26 @@
+@import "../../Utils/include-media.scss";
+
 .input {
-  font-size: 16px;
+  font-size: 1.2rem;
   padding: 10px;
   display: block;
   width: 300px;
+  height: 35px;
   border: none;
   margin: 0 auto;
+  @include media("<=tablet") {
+    width: 230px;
+    height:20px ;
+  }
+  @include media("<=480px") {
+    width: 160px;
+    height: 15px;
+    font-size: 0.9rem;
+  }
+  @include media ("<=phone"){
+    max-width: 140px;
+    height: 10px;
+  }
 }
 .input:focus {
   outline: none;
@@ -18,4 +34,18 @@
   margin-left: auto;
   margin-right: auto;
   width: 15rem;
+  @include media("<=tablet") {
+    width: 230px;
+    height:20px ;
+  }
+  @include media("<=480px") {
+    // width: 160px;
+    // height: 15px;
+    font-size: 0.6rem;
+  }
+  @include media ("<=phone"){
+    max-width: 140px;
+    height: 10px;
+  }
 }
+

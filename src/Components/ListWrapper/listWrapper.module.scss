@@ -1,13 +1,22 @@
+@import "../../Utils/include-media.scss";
 
-.heading{
-    text-align: center;
-    color: rgb(255, 255, 255);
+.heading {
+  text-align: center;
+  color: rgb(255, 255, 255);
+  @include media("<=tablet") {
+    font-size: 1.8rem;
+  }
+  @include media("<=480px") {
+   font-size: 1.5rem;
+  }
+  @include media("<=phone") {
+   font-size: 1.1rem;
+  }
 }
-.listWrapper{
-    background-color: rgb(172, 125, 187);
-    width: 50%;
-    margin: 0 auto;
-    padding-top: 100px;
-    padding-bottom: 35%;
-
+.listWrapper {
+  background-color: rgb(172, 125, 187);
+  width: 60%;
+  height: 100vh;
+  margin: 0 auto;
+  padding-top: 100px;
 }

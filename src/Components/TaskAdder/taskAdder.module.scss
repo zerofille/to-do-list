@@ -1,3 +1,5 @@
+@import "../../Utils/include-media.scss";
+
 .done {
   color: rgb(126, 125, 125);
   text-decoration: line-through;
@@ -8,6 +10,13 @@
   color: rgb(225, 219, 223);
   font-size: 1.2rem;
   font-weight: bold;
+  word-break: break-all;
+  
+  @include media("<=480px") {
+    font-size: 1.2rem;
+    font-weight: bold;
+    
+  }
 }
 .trashIcon {
   color: rgb(105, 9, 125);
@@ -20,5 +29,7 @@
 }
 .task {
   justify-content: left;
-  margin-left: 25%;
+  @include media("<=480px") {
+    margin-left: -2rem;
+  }
 }
