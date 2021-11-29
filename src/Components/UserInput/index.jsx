@@ -23,6 +23,7 @@ export default function UserInput(props) {
         validationSchema={TO_DO_LIST_SCHEME}
         initialValues={startingFormState}
         onSubmit={submitForm}
+        validateOnChange={false}
       >
         <Form>
           <Field
