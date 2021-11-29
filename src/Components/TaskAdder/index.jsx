@@ -1,45 +1,42 @@
+import React, { useState } from "react";
 import cx from "classnames";
 import styles from "./taskAdder.module.scss";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useSelector, useDispatch } from "react-redux";
+import { removeTask } from "../../app/taskSlice";
 
-export default function TaskAdder(props) {
-  const toggle = (i) => {
-    const newTasks = props.tasks.map((task) => {
-      const newTask = {
-        ...task,
-        isDone: task.id === i ? !task.isDone : task.isDone,
-      };
-      return newTask;
-    });
-    props.setTasks(newTasks);
-  };
-
+export default function TaskAdder() {
+  const dispatch = useDispatch();
+  const tasksArray = useSelector((state) => state.tasks.tasks);
+  const [isDone, setIsDone] = useState(false);
   const deleteTask = (i) => {
-    const filteredTasks = props.tasks.filter((task) => task.id !== i);
-    props.setTasks(filteredTasks);
+    dispatch(removeTask(i));
   };
-
+  const classNames = cx({
+    [styles.done]: isDone,
+    [styles.unDone]: !isDone,
+  });
   return (
     <ul>
-      {props.tasks.map((task) => {
-        const classNames = cx({
-          [styles.done]: task.isDone,
-          [styles.unDone]: !task.isDone,
-        });
+      {tasksArray.map((task) => {
         return (
-          <div className={styles.task} style={{ display: "flex" }}>
-            <div style={{ display: "flex" }} onClick={() => toggle(task.id)}>
+          <div
+            className={styles.task}
+            style={{ display: "flex" }}
+            onClick={() => setIsDone(!isDone)}
+          >
+            <div style={{ display: "flex" }}>
               <input
                 className={styles.checkbox}
                 type="checkbox"
-                checked={task.isDone}
+                checked={isDone}
               />
-              <p className={classNames}>{task.body}</p>
+              <p className={classNames}>{task.values.text}</p>
             </div>
             <FontAwesomeIcon
               className={styles.trashIcon}
-              onClick={() => deleteTask(task.id)}
+              onClick={deleteTask}
               icon={faTrashAlt}
             />
           </div>

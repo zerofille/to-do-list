@@ -1,19 +1,27 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { TO_DO_LIST_SCHEME } from "../../Utils/ValidationSchemas";
 import styles from "./userInput.module.scss";
+import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+import { addTask } from "../../app/taskSlice";
+
 export default function UserInput(props) {
   const startingFormState = {
     text: "",
   };
+  const dispatch = useDispatch();
+
   const submitForm = (values, formikBag) => {
-    const { tasks, setTasks } = props;
-    const newTask = {
-      id: Date.now(),
-      isDone: false,
-      body: values.text,
-    };
-    const taskList = [...tasks, newTask];
-    setTasks(taskList);
+    dispatch(addTask({ values, id: Date.now() }));
+    console.log(values);
+    // const { tasks, setTasks } = props;
+    // const newTask = {
+    //   id: Date.now(),
+    //   isDone: false,
+    //   body: values.text,
+    // };
+    // const taskList = [...tasks, newTask];
+    // setTasks(taskList);
     formikBag.resetForm();
   };
 
