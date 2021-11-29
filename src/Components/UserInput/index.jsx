@@ -1,8 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { TO_DO_LIST_SCHEME } from "../../Utils/ValidationSchemas";
 import styles from "./userInput.module.scss";
-import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { addTask } from "../../app/taskSlice";
 
 export default function UserInput(props) {
@@ -10,18 +9,8 @@ export default function UserInput(props) {
     text: "",
   };
   const dispatch = useDispatch();
-
   const submitForm = (values, formikBag) => {
     dispatch(addTask({ values, id: Date.now() }));
-    console.log(values);
-    // const { tasks, setTasks } = props;
-    // const newTask = {
-    //   id: Date.now(),
-    //   isDone: false,
-    //   body: values.text,
-    // };
-    // const taskList = [...tasks, newTask];
-    // setTasks(taskList);
     formikBag.resetForm();
   };
 
